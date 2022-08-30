@@ -36,14 +36,17 @@ public class Trem {
 	public double pesoMaxNoTrem() {
 		double pesoMax = 0;
 		locomotivas.forEach((locomotiva) -> {
-			// pesoMax += locomotiva.getPesoMax()
+			pesoMax += locomotiva.getPesoMax();
 		});
 		return pesoMax;
 	}
 
 	public double pesoAtualNoTrem() {
-		// tirar duvida com o professor
-		return 0;
+		double pesoAtual = 0;
+    for( Vagao vagao : vagoes) {
+      pesoAtual += vagao.getCapacidadeCarga();
+    }
+		return pesoAtual;
 	}
 
 	public boolean engataLocomotiva(Locomotiva locomotiva) {
@@ -56,12 +59,25 @@ public class Trem {
 	}
 
 	public boolean engataVagao(Vagao vagao) {
-		try {
-			vagoes.add(vagao);
+    // calcular 10%
+		double pesoMax = 0;
+    double pesoAtual = 0;
+    
+    for( Locomotiva locomotiva : locomotivas) {
+      pesoMax += locomotiva.getPesoMax();
+    }
+    for( Vagao vagaoPeso : vagoes) {
+      pesoAtual += vagaoPeso.getCapacidadeCarga();
+    }
+    if( locomotivas.size() > 1) {
+      pesoMax = pesoMax / 10 * locomotivas.size(); 
+    }
+    if( pesoMax > pesoAtual) {
+      vagoes.add(vagao);
 			return true;
-		} catch (Exception e) {
-			return false;
-		}
+    }	else {
+      return false;
+    }
 	}
 
 	public boolean desengataLocomotiva() {
@@ -83,6 +99,10 @@ public class Trem {
 	}
 
 	public String toString() {
-		return "Esse trem é o trem " + this.id + " ele tem " + " locomotivas e " + vagoes + " vagoes.";
+    String vagaosName = "";
+    for (Vagao vagao:vagoes){
+      vagaosName += String.valueOf(vagao.getIdentificador());
+    };
+    return "Esse trem é o trem " + this.id + " ele tem " + " locomotivas e " + vagaosName + " vagoes.";
 	}
 }
