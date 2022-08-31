@@ -4,27 +4,42 @@ public class GaragemLocomotivas {
 	private ArrayList<Locomotiva> locomotivas;
 	
 	public GaragemLocomotivas(){
-		locomotivas = new ArrayList<>();
+		locomotivas = new ArrayList<locomotiva> locomotivas();
 	}
 
 	public void adicionaGaragem(Locomotiva l){
-		// TO DO
+		locomotivas.add(locomotiva);
 	}
 
 	public boolean removeGaragem(int id){
-		// TO DO
+		 for(Locomotiva locomotiva : locomotivas) {
+      if(locomotiva.getid() == id) {
+        locomotivas.remove(id);
+        return true;
+      }
+    }
+    return false;
 	}
 
 	public int qtdade(){
-		// TO DO
+		return locomotivas.size();
 	}
 
 	public Locomotiva getPorPosicao(int pos){
-		// TO DO
+		if( pos <= locomotivas.size() - 1 && pos >= 0) {
+      return locomotivas.get(pos);
+    } else {
+      return null;
+    }
 	}
 
 	public Locomotiva getPorId(int id){
-		// TO DO
+		for( Locomotiva locomotiva : locomotivas ) {
+      if(locomotiva.getid() == id) {
+        return locomotiva;
+      };
+    }
+    return null;
 	}
 
 	public String toString(){
