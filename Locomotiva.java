@@ -1,44 +1,41 @@
 public class Locomotiva {
-  
-  private int id;
-  private double pesoMax;
-  private int qtdadeMaxVagoes;
 
-public locomotiva (int id, double pesoMax, int qtdadeMaxVagoes) {
+	private int id;
+	private double pesoMax;
+	private int qtdadeMaxVagoes;
+	private Trem trem;
 
-this.id = id;
-this.pesoMax = pesoMax;
-this.qtdadeMaxVagoes = qtdadeMaxVagoes;
+	public Locomotiva(int id, double pesoMax, int qtdadeMaxVagoes) {
+		this.id = id;
+		this.pesoMax = pesoMax;
+		this.qtdadeMaxVagoes = qtdadeMaxVagoes;
+	}
 
-}
-public int getid() {
-  return id;
-}
+	public int getid() {
+		return id;
+	}
 
-public double getPesoMax {
-  return pesoMax
-}
+	public double getPesoMax() {
+		return pesoMax;
+	}
 
-public int getQtdeMaxVagoes() {
-  return qtdadeMaxVagoes
-}
-public Trem getTrem() {
-  return trem;
-}
+	public int getQtdeMaxVagoes() {
+		return qtdadeMaxVagoes;
+	}
 
-public boolean livre () {
-  return true;
-}
+	public Trem getTrem() {
+		return trem;
+	}
 
-public void setTrem(Trem trem){
-        return trem;
-    }
+	public boolean livre() {
+		return true;
+	}
 
-public String toString () {
-  String locomotivasName = "";
-  for (Locomotiva locomotiva:locomotivas){
-      locomotivasName += String.valueOf(vagao.getid());
-    };
-  return locomotivasName;
-}
+	public void setTrem(Trem trem) {
+		this.trem = trem;
+	}
+
+	public String toString() {
+		return "locomotiva com id " + getid() + " consegue carregar " + getPesoMax();
+	}
 }

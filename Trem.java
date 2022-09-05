@@ -6,6 +6,8 @@ public class Trem {
 	private ArrayList<Vagao> vagoes;
 
 	public Trem(int id) {
+		locomotivas = new ArrayList<Locomotiva>();
+		vagoes = new ArrayList<Vagao>();
 		this.id = id;
 	}
 
@@ -35,49 +37,38 @@ public class Trem {
 
 	public double pesoMaxNoTrem() {
 		double pesoMax = 0;
-		locomotivas.forEach((locomotiva) -> {
+		for (Locomotiva locomotiva : locomotivas) {
 			pesoMax += locomotiva.getPesoMax();
-		});
+		}
+		if (getQtdadeLocomotivas() > 1) {
+			return pesoMax - pesoMax * (0.1 * (getQtdadeLocomotivas() - 1));
+		}
 		return pesoMax;
 	}
 
 	public double pesoAtualNoTrem() {
 		double pesoAtual = 0;
-    for( Vagao vagao : vagoes) {
-      pesoAtual += vagao.getCapacidadeCarga();
-    }
+		for (Vagao vagao : vagoes) {
+			pesoAtual += vagao.getCapacidadeCarga();
+		}
 		return pesoAtual;
 	}
 
 	public boolean engataLocomotiva(Locomotiva locomotiva) {
-		try {
+		if (getQtdadeVagões() == 0) {
 			locomotivas.add(locomotiva);
 			return true;
-		} catch (Exception e) {
-			return false;
 		}
+		return false;
 	}
 
 	public boolean engataVagao(Vagao vagao) {
-    // calcular 10%
-		double pesoMax = 0;
-    double pesoAtual = 0;
-    
-    for( Locomotiva locomotiva : locomotivas) {
-      pesoMax += locomotiva.getPesoMax();
-    }
-    for( Vagao vagaoPeso : vagoes) {
-      pesoAtual += vagaoPeso.getCapacidadeCarga();
-    }
-    if( locomotivas.size() > 1) {
-      pesoMax = pesoMax / 10 * locomotivas.size(); 
-    }
-    if( pesoMax > pesoAtual) {
-      vagoes.add(vagao);
+		if (getQtdadeLocomotivas() > 0 || maxVagoesNoTrem() > getQtdadeVagões()) {
+			vagoes.add(vagao);
 			return true;
-    }	else {
-      return false;
-    }
+		} else {
+			return false;
+		}
 	}
 
 	public boolean desengataLocomotiva() {
@@ -99,10 +90,6 @@ public class Trem {
 	}
 
 	public String toString() {
-    String vagaosName = "";
-    for (Vagao vagao:vagoes){
-      vagaosName += String.valueOf(vagao.getIdentificador());
-    };
-    return "Esse trem é o trem " + this.id + " ele tem " + " locomotivas e " + vagaosName + " vagoes.";
+		return "Esse trem tem id " + getID();
 	}
 }

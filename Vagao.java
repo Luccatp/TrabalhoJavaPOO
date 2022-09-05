@@ -1,8 +1,8 @@
 
 public class Vagao {
 	private double capacidadeCarga;
-    private int identificador;
-    private Trem refTrem;
+	private int identificador;
+	private Trem refTrem;
 
 	public Vagao(int identificador, double capacidadeCarga) {
 		this.identificador = identificador;
@@ -17,22 +17,23 @@ public class Vagao {
 		return capacidadeCarga;
 	}
 
-    public Trem getTrem(){
-        return this.refTrem;
-    }
-
-
-	public boolean livre() {
-		if(this.refTrem != null) return false;
-        else return true;
+	public Trem getTrem() {
+		return this.refTrem;
 	}
 
-	public void setTrem(Trem trem){
-        this.refTrem = trem;
-    }
+	public boolean livre() {
+		if (this.refTrem != null)
+			return false;
+		else
+			return true;
+	}
+
+	public void setTrem(Trem trem) {
+		this.refTrem = trem;
+	}
 
 	@Override
 	public String toString() {
-		return "Esse trem é o vação " + this.identificador+ " com capacidade de carga " + this.capacidadeCarga +  " e referencia o trem " + refTrem;
+		return "Esse trem é o vagão " + this.identificador + " com capacidade de carga " + this.capacidadeCarga;
 	}
 }
