@@ -2,15 +2,14 @@
 public class Vagao extends ElementoTrem {
 	private double capacidadeCarga;
 	private int identificador;
-	private Trem refTrem;
 
-	public Vagao(int identificador, double capacidadeCarga) {
-		this.identificador = identificador;
+	public Vagao(int id, double capacidadeCarga) {
+		super.setId(id);
 		this.capacidadeCarga = capacidadeCarga;
 	}
 
 	public int getIdentificador() {
-		return identificador;
+		return super.getId();
 	}
 
 	public double getCapacidadeCarga() {
@@ -18,18 +17,15 @@ public class Vagao extends ElementoTrem {
 	}
 
 	public Trem getTrem() {
-		return this.refTrem;
+		return super.getTrem();
 	}
 
 	public boolean livre() {
-		if (this.refTrem != null)
-			return false;
-		else
-			return true;
+		return super.livre();
 	}
 
 	public void setTrem(Trem trem) {
-		this.refTrem = trem;
+		super.setTrem(trem);
 	}
 
 	@Override

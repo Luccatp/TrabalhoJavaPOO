@@ -2,7 +2,6 @@ public class Locomotiva extends ElementoTrem {
 
 	private double pesoMax;
 	private int qtdadeMaxVagoes;
-	private Trem trem;
 
 	public Locomotiva(int id, double pesoMax, int qtdadeMaxVagoes) {
 		super.setId(id);
@@ -23,18 +22,15 @@ public class Locomotiva extends ElementoTrem {
 	}
 
 	public Trem getTrem() {
-		return trem;
+		return super.getTrem();
 	}
 
 	public boolean livre() {
-		if (this.trem != null)
-			return false;
-		else
-			return true;
+		return super.livre();
 	}
 
 	public void setTrem(Trem trem) {
-		this.trem = trem;
+		super.setTrem(trem);
 	}
 
 	@Override
