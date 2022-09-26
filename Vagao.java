@@ -1,5 +1,5 @@
 
-public class Vagao {
+public class Vagao extends ElementoTrem {
 	private double capacidadeCarga;
 	private int identificador;
 	private Trem refTrem;

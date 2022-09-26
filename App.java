@@ -4,8 +4,7 @@ public class App {
 	public static void main(String[] args) throws Exception {
 		Scanner in = new Scanner(System.in);
 		int selected;
-		GaragemLocomotivas garagemLocomotivas = new GaragemLocomotivas();
-		GaragemVagoes garagemVagoes = new GaragemVagoes();
+		Garagem garagem = new Garagem();
 		PatioDeManobras patioDeManobras = new PatioDeManobras();
 		do {
 			System.out.println("---- MENU ----");
@@ -21,11 +20,11 @@ public class App {
 					int id = in.nextInt();
 					Trem trem = new Trem(id);
 					System.out.println("Selecione uma locomotiva ");
-					for (int i = 0; i < garagemLocomotivas.qtdade(); i++) {
-						System.out.println(garagemLocomotivas.getPorPosicao(i));
+					for (int i = 0; i < garagem.locomotivasSize(); i++) {
+						System.out.println(garagem.getLocPorPosicao(i));
 					}
 					int locomotivaPos = in.nextInt();
-					Locomotiva newLocomotiva = garagemLocomotivas.getPorId(locomotivaPos);
+					Locomotiva newLocomotiva = garagem.getLocPorId(locomotivaPos);
 					trem.engataLocomotiva(newLocomotiva);
 					patioDeManobras.adicionaPatio(trem);
 					System.out.println("Trem criado com sucesso");
@@ -51,20 +50,20 @@ public class App {
 						switch (editAction) {
 							case 1:
 								System.out.println("Selecione uma locomotiva ");
-								for (int i = 0; i < garagemLocomotivas.qtdade(); i++) {
-									System.out.println(garagemLocomotivas.getPorPosicao(i));
+								for (int i = 0; i < garagem.vagoesSize(); i++) {
+									System.out.println(garagem.getVagoesPorPosicao(i));
 								}
 								int locomotivaId = in.nextInt();
-								Locomotiva locomotivaToInsert = garagemLocomotivas.getPorId(locomotivaId);
+								Locomotiva locomotivaToInsert = garagem.getLocPorId(locomotivaId);
 								editTrem.engataLocomotiva(locomotivaToInsert);
 								break;
 							case 2:
-								for (int i = 0; i < garagemVagoes.qtdade(); i++) {
-									System.out.println(garagemVagoes.getPorPosicao(i));
+								for (int i = 0; i < garagem.vagoesSize(); i++) {
+									System.out.println(garagem.getVagoesPorPosicao(i));
 								}
 								System.out.println("Selecione um vagão");
 								int vagaoId = in.nextInt();
-								Vagao vagaoToInsert = garagemVagoes.getPorId(vagaoId);
+								Vagao vagaoToInsert = garagem.getVagoesPorId(vagaoId);
 								editTrem.engataVagao(vagaoToInsert);
 								break;
 							case 3:
@@ -83,14 +82,14 @@ public class App {
 								break;
 							case 4:
 								System.out.println("Listando Locomotivas livres");
-								for (int i = 0; i < garagemLocomotivas.qtdade(); i++) {
-									System.out.println(garagemLocomotivas.getPorPosicao(i));
+								for (int i = 0; i < garagem.locomotivasSize(); i++) {
+									System.out.println(garagem.getLocPorPosicao(i));
 								}
 								break;
 							case 5:
 								System.out.println("Listando Vagoes livres");
-								for (int i = 0; i < garagemVagoes.qtdade(); i++) {
-									System.out.println(garagemVagoes.getPorPosicao(i));
+								for (int i = 0; i < garagem.vagoesSize(); i++) {
+									System.out.println(garagem.getVagoesPorPosicao(i));
 								}
 								break;
 						}
